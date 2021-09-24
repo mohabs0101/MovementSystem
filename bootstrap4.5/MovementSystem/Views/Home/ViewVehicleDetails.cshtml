@@ -1,0 +1,233 @@
+﻿@model MovementSystem.Models.TableMv1Vehicle
+@using System.Data;
+@{
+    ViewData["Title"] = "ViewVehicleDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //DataTable vehicleLogsListDT = ViewBag.vehicleLogsList as DataTable;
+
+}
+
+<h1>ViewVehicleDetails</h1>
+
+<div class="col-md-12">
+
+    <hr />
+
+    <dl>
+
+
+
+
+        <dd class="col-lg-auto">
+
+            <div class="container">
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col ">
+                        <strong> رقم الشاصي:  </strong>
+                        @Html.DisplayFor(model => model.VinNo)
+
+                    </div>
+                    <div class="col">
+                        <strong>     نوع الهيكل    : </strong>
+                        @Html.DisplayFor(model => model.VehicleBodyType)
+                    </div>
+                    <div class="col">
+                        <strong> اسم المركبة : </strong>
+                        @Html.DisplayFor(model => model.VehicleName)
+                    </div>
+                    <div class="col">
+                        <strong>رقم اللوحة:</strong>
+                        @Html.DisplayFor(model => model.PlateNumber)
+
+                    </div>
+                    <div class="col">
+                        <strong>  الحمولة:</strong>
+                        @Html.DisplayFor(model => model.Payload)
+                    </div>
+
+                </div>
+
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col ">
+                        <strong>عدد الركاب:</strong>
+                        @Html.DisplayFor(model => model.PassengersNo)
+
+                    </div>
+                    <div class="col">
+                        <strong>  عدد المحاور:</strong>
+                        @Html.DisplayFor(model => model.WheelNo)
+                    </div>
+                    <div class="col">
+                        <strong>رقم معرف المركبة:</strong>
+                        @Html.DisplayFor(model => model.IdVechicle)
+                    </div>
+                    <div class="col">
+                        <strong>  الموديل:</strong>
+                        @Html.DisplayFor(model => model.VehicleModel)
+
+                    </div>
+                    <div class="col">
+                        <strong>  المنشيء:</strong>
+                        @Html.DisplayFor(model => model.VehicleBrand)
+                    </div>
+
+                </div>
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col ">
+                        <strong>سعر المركبة:</strong>
+                        @Html.DisplayFor(model => model.VehiclePrice)
+
+                    </div>
+                    <div class="col">
+                        <strong>مسؤول المركبة:  </strong>
+                        @Html.DisplayFor(model => model.VehicleAdministrator)
+                    </div>
+                    <div class="col">
+                        <strong>رقم المستند:</strong>
+                        @Html.DisplayFor(model => model.DocumentNo)
+                    </div>
+                    <div class="col">
+                        <strong>تاريخ امستند:</strong>
+                        @Html.DisplayFor(model => model.DocumentDate)
+                    </div>
+                    <div class="col">
+                        <strong>ملاحضات:</strong>
+                        @Html.DisplayFor(model => model.NotesMe)
+                    </div>
+
+                </div>
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col ">
+                        <strong>حالة الواجب:</strong>
+                        @Html.DisplayFor(model => model.StatusLastVehicleMovement)
+
+                    </div>
+                    <div class="col">
+                        <strong>حالة المركبة:</strong>
+                        @Html.DisplayFor(model => model.StatusLastVehicle)
+                    </div>
+                    <div class="col">
+                        <strong>لون المركبة:</strong>
+                        @Html.DisplayFor(model => model.StatusLastVehicleColor)
+                    </div>
+                    <div class="col">
+                        <strong>حالة التدريع:</strong>
+                        @Html.DisplayFor(model => model.StatusLastArmored)
+                    </div>
+                    <div class="col">
+                        <strong>معدل ساعات العمل:</strong>
+                        @Html.DisplayFor(model => model.StatusLastHoursWork)
+                    </div>
+
+                </div>
+
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col ">
+                        <strong>معدل اكيلومتر المقطوع:</strong>
+                        @Html.DisplayFor(model => model.StatusLastKilometers)
+
+                    </div>
+                    <div class="col">
+                        <strong>معدل استهلاك المركبة:</strong>
+                        @Html.DisplayFor(model => model.StatusLastVehicleConsumingRate)
+                    </div>
+                    <div class="col">
+                        <strong>مستودع المركبة:</strong>
+                        @Html.DisplayFor(model => model.StatusLastVehicleWarehouse)
+                    </div>
+                    <div class="col">
+                        <strong>عائدية المركبة:</strong>
+                        @Html.DisplayFor(model => model.StatusLastVehicleSource)
+                    </div>
+                    <div class="col">
+                        <strong>تاريخ الاضافة:</strong>
+                        @Html.DisplayFor(model => model.DateAdd)
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </dd>
+
+
+    </dl>
+</div>
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdVehicle">تعديل</a>
+
+    <a asp-action="VehicleList">رجوع</a>
+</div>
+
+<div class="card-body">
+    <h6 class="card-subtitle">سجل احداث المركبة</h6>
+    <div class="table-responsive">
+        <table id="datatable-buttons" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    
+                    <th>
+                      رقم معرف المركبة
+                    </th>
+                    <th>
+                       لون المركبة
+                    </th>
+                    <th>
+                        حالة التدريع
+                    </th>
+                    <th>
+                       عدد ساعات العمل
+                    </th>
+                    <th>
+                       عدد الكيلومترات
+                    </th>
+                    <th>
+                        نسبة الاستهلاك
+                    </th>
+                    <th>
+                        مستودع المركبة
+                    </th>
+                    <th>
+                        عائدية المركبة
+                    </th>
+                    <th>
+                      تاريخ الاضافة
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.vehicleLogsList != null)
+                {
+                    @foreach (var row in ViewBag.vehicleLogsList )
+                    {
+                <tr style="text-align:center">
+                    <td style="display:none">@row.IdStatusVehicleRegister</td>
+                    <td>@row.IdVehicle</td>
+                    <td>@row.VehicleColor</td>
+                    <td>@row.VehicleArmored</td>
+                    <td>@row.VehicleHoursWork</td>
+                    <td>@row.VehicleKilometers</td>
+                    <td>@row.VehicleConsumingRate</td>
+                    <td>@row.VehicleWarehouse</td>
+                    <td>@row.VehicleSource</td>
+                    <td>@row.DateAdd</td>
+
+
+                </tr>
+                    }
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+ 

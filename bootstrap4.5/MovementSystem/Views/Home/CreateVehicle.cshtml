@@ -1,0 +1,190 @@
+﻿@model MovementSystem.Models.TableMv1Vehicle
+
+@{
+    ViewData["Title"] = "CreateVehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+
+<br />
+<h4>اضافة مركبة جديدة</h4>
+<hr />
+<div class="row">
+
+    <form asp-action="CreateVehicle">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container">
+            <div class="row" style="padding-bottom:10px">
+                <div class=" col">
+                    <label  class="control-label">رقم الشاصي</label>
+                    <input asp-for="VinNo" class="form-control" />
+                    <span asp-validation-for="VinNo" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label  class="control-label">نوع الهيكل</label>
+                    <input asp-for="VehicleBodyType" class="form-control" />
+                    <span asp-validation-for="VehicleBodyType" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label  class="control-label">اسم المركبة</label>
+                    <input asp-for="VehicleName" class="form-control" />
+                    <span asp-validation-for="VehicleName" class="text-danger"></span>
+                </div>
+
+                <div class=" col">
+                    <label   class="control-label">الرقم التعيفي للمركبة</label>
+                    <input asp-for="IdVechicle" class="form-control" />
+                    <span asp-validation-for="IdVechicle" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row" style="padding-bottom:10px">
+                <div class=" col">
+                    <label   class="control-label">رقم اللوحة</label>
+                    <input asp-for="PlateNumber" class="form-control" />
+                    <span asp-validation-for="PlateNumber" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label   class="control-label">الحمولة</label>
+                    <input asp-for="Payload" class="form-control" />
+                    <span asp-validation-for="Payload" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label   class="control-label">عدد الركاب</label>
+                    <input asp-for="PassengersNo" class="form-control" />
+                    <span asp-validation-for="PassengersNo" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label  class="control-label">عدد المحاور</label>
+                    <input asp-for="WheelNo" class="form-control" />
+                    <span asp-validation-for="WheelNo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom:10px">
+                <div class=" col">
+                    <label   class="control-label">موديل المركبة</label>
+                    <input asp-for="VehicleModel" class="form-control" />
+                    <span asp-validation-for="VehicleModel" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label  class="control-label">المنشيء</label>
+                    <input asp-for="VehicleBrand" class="form-control" />
+                    <span asp-validation-for="VehicleBrand" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label  class="control-label">سعر المركبة</label>
+                    <input asp-for="VehiclePrice" class="form-control" />
+                    <span asp-validation-for="VehiclePrice" class="text-danger"></span>
+                </div>
+                <div class=" col">
+                    <label   class="control-label">مسؤول المركبة</label>
+                    <input asp-for="VehicleAdministrator" class="form-control" />
+                    <span asp-validation-for="VehicleAdministrator" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom:10px">
+                <div class="col">
+                    <label   class="control-label">رقم المستند</label>
+                    <input asp-for="DocumentNo" class="form-control" />
+                    <span asp-validation-for="DocumentNo" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label   class="control-label">تاريخ المستند</label>
+                    <input asp-for="DocumentDate" class="form-control" />
+                    <span asp-validation-for="DocumentDate" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label   class="control-label">ملاحظات</label>
+                    <input asp-for="NotesMe" class="form-control" />
+                    <span asp-validation-for="NotesMe" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label  class="control-label">حالة الواجب</label>
+                    <input asp-for="StatusLastVehicleMovement" class="form-control" />
+                    <span asp-validation-for="StatusLastVehicleMovement" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom:10px">
+                <div class="col">
+                    <label  class="control-label">حالة المركبة</label>
+                    <input asp-for="StatusLastVehicle" class="form-control" />
+                    <span asp-validation-for="StatusLastVehicle" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label  class="control-label">لون المركبة</label>
+                    <input asp-for="StatusLastVehicleColor" class="form-control" />
+                    <span asp-validation-for="StatusLastVehicleColor" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label class="control-label">حالة التدريع</label>
+                    <input asp-for="StatusLastArmored" class="form-control" />
+                    <span asp-validation-for="StatusLastArmored" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label  class="control-label">عدد ساعات العمل</label>
+                    <input asp-for="StatusLastHoursWork" class="form-control" />
+                    <span asp-validation-for="StatusLastHoursWork" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom:10px">
+                <div class="col">
+                    <label  class="control-label">عدد الكيلومتر</label>
+                    <input asp-for="StatusLastKilometers" class="form-control" />
+                    <span asp-validation-for="StatusLastKilometers" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label  class="control-label">نسبة الاستهلاك</label>
+                    <input asp-for="StatusLastVehicleConsumingRate" class="form-control" />
+                    <span asp-validation-for="StatusLastVehicleConsumingRate" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label   class="control-label">مستودع المركبة</label>
+                    <input asp-for="StatusLastVehicleWarehouse" class="form-control" />
+                    <span asp-validation-for="StatusLastVehicleWarehouse" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label   class="control-label">عائدية المركبة</label>
+                    <input asp-for="StatusLastVehicleSource" class="form-control" />
+                    <span asp-validation-for="StatusLastVehicleSource" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom:10px">
+                <div class="col-md-3">
+                    <label   class="control-label">تاريخ الاضافة </label>
+                    <input asp-for="DateAdd" class="form-control" />
+                    <span asp-validation-for="DateAdd" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="row" style="padding-bottom:10px">
+                <div class="form-group col">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+                <div class="form-group col " >
+                    <a asp-action="Index" style="float:left">رجوع</a>
+                </div>
+            </div>
+          
+        </div>
+
+
+
+    </form>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
