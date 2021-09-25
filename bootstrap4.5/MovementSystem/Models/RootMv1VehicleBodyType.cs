@@ -17,7 +17,5 @@ namespace MovementSystem.Models
         [Column("vehicle_body_name")]
         [StringLength(50)]
         public string VehicleBodyName { get; set; }
-        [Column("vehicle_image", TypeName = "image")]
-        public byte[] VehicleImage { get; set; }
     }
 }

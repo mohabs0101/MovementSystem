@@ -19,23 +19,38 @@
         <div class="container">
             <div class="row" style="padding-bottom:10px">
                 <div class=" col">
-                    <label  class="control-label">رقم الشاصي</label>
+                    <label class="control-label">رقم الشاصي</label>
                     <input asp-for="VinNo" class="form-control" />
                     <span asp-validation-for="VinNo" class="text-danger"></span>
                 </div>
-                <div class=" col">
-                    <label  class="control-label">نوع الهيكل</label>
-                    <input asp-for="VehicleBodyType" class="form-control" />
-                    <span asp-validation-for="VehicleBodyType" class="text-danger"></span>
+
+                <div class="col">
+                    <label class="control-label">نوع الهيكل</label>
+
+                    <select id="bodyTypelist" class="form-control" asp-for="VehicleBodyType" asp-items="@(new SelectList(ViewBag.bodyTypeList))">
+                        >
+
+                        <option value="">--نوع الهيكل--</option>
+                    </select>
+                    @*<input type="hidden" asp-for="VehicleBodyType" />*@
+
+
+
+                    @*SelectList customers = new SelectList(this.Context.Customers.ToList(), "CustomerId", "Name");
+                        return View(customers);*@
                 </div>
                 <div class=" col">
-                    <label  class="control-label">اسم المركبة</label>
-                    <input asp-for="VehicleName" class="form-control" />
+                    <label class="control-label">اسم المركبة</label>
+                    <select id="VehicleNamelist" class="form-control" asp-for="VehicleName" asp-items="@(new SelectList(ViewBag.vehiclename))">
+                        >
+
+                        <option value="">--اسم المركبة  --</option>
+                    </select>
                     <span asp-validation-for="VehicleName" class="text-danger"></span>
                 </div>
 
                 <div class=" col">
-                    <label   class="control-label">الرقم التعيفي للمركبة</label>
+                    <label class="control-label">الرقم التعيفي للمركبة</label>
                     <input asp-for="IdVechicle" class="form-control" />
                     <span asp-validation-for="IdVechicle" class="text-danger"></span>
                 </div>
@@ -44,133 +59,200 @@
 
             <div class="row" style="padding-bottom:10px">
                 <div class=" col">
-                    <label   class="control-label">رقم اللوحة</label>
+                    <label class="control-label">رقم اللوحة</label>
                     <input asp-for="PlateNumber" class="form-control" />
                     <span asp-validation-for="PlateNumber" class="text-danger"></span>
                 </div>
                 <div class=" col">
-                    <label   class="control-label">الحمولة</label>
+                    <label class="control-label">الحمولة</label>
                     <input asp-for="Payload" class="form-control" />
                     <span asp-validation-for="Payload" class="text-danger"></span>
                 </div>
                 <div class=" col">
-                    <label   class="control-label">عدد الركاب</label>
+                    <label class="control-label">عدد الركاب</label>
                     <input asp-for="PassengersNo" class="form-control" />
                     <span asp-validation-for="PassengersNo" class="text-danger"></span>
                 </div>
                 <div class="col">
-                    <label  class="control-label">عدد المحاور</label>
-                    <input asp-for="WheelNo" class="form-control" />
+                    <label class="control-label">عدد المحاور</label>
+                    <select id="WheelNo" class="form-control" asp-for="WheelNo">
+                        <option value="">--اختيار--</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+
+                    </select>
                     <span asp-validation-for="WheelNo" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row" style="padding-bottom:10px">
                 <div class=" col">
-                    <label   class="control-label">موديل المركبة</label>
+                    <label class="control-label">موديل المركبة</label>
                     <input asp-for="VehicleModel" class="form-control" />
                     <span asp-validation-for="VehicleModel" class="text-danger"></span>
                 </div>
                 <div class=" col">
-                    <label  class="control-label">المنشيء</label>
+                    <label class="control-label">المنشيء</label>
                     <input asp-for="VehicleBrand" class="form-control" />
                     <span asp-validation-for="VehicleBrand" class="text-danger"></span>
                 </div>
                 <div class=" col">
-                    <label  class="control-label">سعر المركبة</label>
+                    <label class="control-label">سعر المركبة</label>
                     <input asp-for="VehiclePrice" class="form-control" />
                     <span asp-validation-for="VehiclePrice" class="text-danger"></span>
                 </div>
                 <div class=" col">
-                    <label   class="control-label">مسؤول المركبة</label>
-                    <input asp-for="VehicleAdministrator" class="form-control" />
+                    <label class="control-label">مسؤول المركبة</label>
+
+                    <select id="VehicleAdministrator" class="form-control" asp-for="VehicleAdministrator" asp-items="@(new SelectList(ViewBag.individul_fullname))">
+                        >
+
+                        <option value="">--مسؤول المركبة  --</option>
+                    </select>
                     <span asp-validation-for="VehicleAdministrator" class="text-danger"></span>
                 </div>
             </div>
             <div class="row" style="padding-bottom:10px">
                 <div class="col">
-                    <label   class="control-label">رقم المستند</label>
+                    <label class="control-label">رقم المستند</label>
                     <input asp-for="DocumentNo" class="form-control" />
                     <span asp-validation-for="DocumentNo" class="text-danger"></span>
                 </div>
                 <div class="col">
-                    <label   class="control-label">تاريخ المستند</label>
-                    <input asp-for="DocumentDate" class="form-control" />
+                    <label class="control-label">تاريخ المستند</label>
+
+
+
+                    <input asp-for="DocumentDate" id="datepicker" type="text" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
                     <span asp-validation-for="DocumentDate" class="text-danger"></span>
+
+
                 </div>
                 <div class="col">
-                    <label   class="control-label">ملاحظات</label>
+                    <label class="control-label">ملاحظات</label>
                     <input asp-for="NotesMe" class="form-control" />
                     <span asp-validation-for="NotesMe" class="text-danger"></span>
                 </div>
+
+                @*make status change whenever vehicle on duty*@
                 <div class="col">
-                    <label  class="control-label">حالة الواجب</label>
-                    <input asp-for="StatusLastVehicleMovement" class="form-control" />
+                    <label class="control-label">حالة الواجب</label>
+                    <select id="StatusLastVehicleMovement" class="form-control" asp-for="StatusLastVehicleMovement">
+                        <option value="">--اختيار--</option>
+                        <option value="اثناء الواجب"> اثناء الواجب</option>
+                        <option value="بدون واجب">  بدون واجب</option>
+
+
+
+                    </select>
                     <span asp-validation-for="StatusLastVehicleMovement" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row" style="padding-bottom:10px">
                 <div class="col">
-                    <label  class="control-label">حالة المركبة</label>
-                    <input asp-for="StatusLastVehicle" class="form-control" />
+                    <label class="control-label">حالة جاهزية المركبة</label>
+                    <select id="StatusLastVehicle" class="form-control" asp-for="StatusLastVehicle">
+                        <option value="">--اختيار--</option>
+                        <option value=" جاهزة"> جاهزة</option>
+                        <option value="  تحت الصيانة">  تحت الصيانة</option>
+                        <option value=" عاطلة">    عاطلة</option>
+
+
+
+                    </select>
                     <span asp-validation-for="StatusLastVehicle" class="text-danger"></span>
                 </div>
                 <div class="col">
-                    <label  class="control-label">لون المركبة</label>
+                    <label class="control-label">لون المركبة</label>
                     <input asp-for="StatusLastVehicleColor" class="form-control" />
                     <span asp-validation-for="StatusLastVehicleColor" class="text-danger"></span>
                 </div>
                 <div class="col">
                     <label class="control-label">حالة التدريع</label>
-                    <input asp-for="StatusLastArmored" class="form-control" />
+                    <select id="StatusLastArmored" class="form-control" asp-for="StatusLastArmored">
+                        <option value="">--اختيار--</option>
+                        <option value="10%">مدرعة</option>
+                        <option value="20%">غير مدرعة</option>
+
+                    </select>
                     <span asp-validation-for="StatusLastArmored" class="text-danger"></span>
                 </div>
+                @*change it later to make it count whenever vehicle on duty*@
                 <div class="col">
-                    <label  class="control-label">عدد ساعات العمل</label>
+                    <label class="control-label">عدد ساعات العمل</label>
                     <input asp-for="StatusLastHoursWork" class="form-control" />
                     <span asp-validation-for="StatusLastHoursWork" class="text-danger"></span>
                 </div>
             </div>
             <div class="row" style="padding-bottom:10px">
                 <div class="col">
-                    <label  class="control-label">عدد الكيلومتر</label>
+                    <label class="control-label">عدد الكيلومتر</label>
                     <input asp-for="StatusLastKilometers" class="form-control" />
                     <span asp-validation-for="StatusLastKilometers" class="text-danger"></span>
                 </div>
                 <div class="col">
-                    <label  class="control-label">نسبة الاستهلاك</label>
-                    <input asp-for="StatusLastVehicleConsumingRate" class="form-control" />
+                    <label class="control-label">نسبة الاستهلاك</label>
+                    <select id="StatusLastVehicleConsumingRate" class="form-control" asp-for="StatusLastVehicleConsumingRate">
+                        <option value="">--اختيار--</option>
+                        <option value="10%">--10%--</option>
+                        <option value="20%">--20%--</option>
+                        <option value="30%">--30%--</option>
+                        <option value="40%">--40%--</option>
+                        <option value="50%">--50%--</option>
+                        <option value="60%">--60%--</option>
+                        <option value="70%">--70%--</option>
+                        <option value="80%">--80%--</option>
+                        <option value="90%">--90%--</option>
+                        <option value="100%">--100%--</option>
+                    </select>
                     <span asp-validation-for="StatusLastVehicleConsumingRate" class="text-danger"></span>
+
+
                 </div>
                 <div class="col">
-                    <label   class="control-label">مستودع المركبة</label>
-                    <input asp-for="StatusLastVehicleWarehouse" class="form-control" />
+                    <label class="control-label">مستودع المركبة</label>
+
+                    <select id="StatusLastVehicleWarehouse" class="form-control" asp-for="StatusLastVehicleWarehouse" asp-items="@(new SelectList(ViewBag.vehiclWarehouse))">
+                        >
+
+                        <option value="">--مستودع المركبة--</option>
+                    </select>
                     <span asp-validation-for="StatusLastVehicleWarehouse" class="text-danger"></span>
                 </div>
                 <div class="col">
-                    <label   class="control-label">عائدية المركبة</label>
-                    <input asp-for="StatusLastVehicleSource" class="form-control" />
-                    <span asp-validation-for="StatusLastVehicleSource" class="text-danger"></span>
+                    <label class="control-label">عائدية المركبة</label>
+
+                    <select id="StatusLastVehicleSource" class="form-control" asp-for="StatusLastVehicleSource" asp-items="@(new SelectList(ViewBag.vehicleSource))">
+                        >
+
+                        <option value="">--عائدية المركبة--</option>
+                    </select>                    <span asp-validation-for="StatusLastVehicleSource" class="text-danger"></span>
                 </div>
             </div>
             <div class="row" style="padding-bottom:10px">
                 <div class="col-md-3">
-                    <label   class="control-label">تاريخ الاضافة </label>
-                    <input asp-for="DateAdd" class="form-control" />
+                    @*<label class="control-label">تاريخ الاضافة </label>*@
+
+                    <input asp-for="DateAdd" id="datepicker" type="hidden" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
                     <span asp-validation-for="DateAdd" class="text-danger"></span>
                 </div>
+
+
 
             </div>
             <div class="row" style="padding-bottom:10px">
                 <div class="form-group col">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
-                <div class="form-group col " >
+                <div class="form-group col ">
                     <a asp-action="Index" style="float:left">رجوع</a>
                 </div>
             </div>
-          
+
         </div>
 
 
@@ -186,5 +268,25 @@
 }
 
 
-
-
+@section datepicker_CreateVehicle
+{
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+}
+@section Searchable_drop
+{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js">
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#VehicleAdministrator").select2();
+        });
+    </script>
+    }

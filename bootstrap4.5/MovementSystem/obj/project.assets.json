@@ -8676,11 +8676,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mohammed\\Desktop\\bootstrap4.5\\bootstrap4.5\\MovementSystem\\MovementSystem.csproj",
+      "projectUniqueName": "C:\\Users\\mohammed\\Desktop\\MS\\MovementSystem\\bootstrap4.5\\MovementSystem\\MovementSystem.csproj",
       "projectName": "MovementSystem",
-      "projectPath": "C:\\Users\\mohammed\\Desktop\\bootstrap4.5\\bootstrap4.5\\MovementSystem\\MovementSystem.csproj",
+      "projectPath": "C:\\Users\\mohammed\\Desktop\\MS\\MovementSystem\\bootstrap4.5\\MovementSystem\\MovementSystem.csproj",
       "packagesPath": "C:\\Users\\mohammed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mohammed\\Desktop\\bootstrap4.5\\bootstrap4.5\\MovementSystem\\obj\\",
+      "outputPath": "C:\\Users\\mohammed\\Desktop\\MS\\MovementSystem\\bootstrap4.5\\MovementSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

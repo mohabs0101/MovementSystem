@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MovementSystem.Models;
 using System;
@@ -56,16 +57,35 @@ namespace MovementSystem.Controllers
             return View(details);
         }
         public ActionResult CreateVehicle()
-        {
+        {//bring bodyType
+            //model.EmployeesList = data.Select(x => new Itemlist { Value = x.EmployeeId, Text = x.EmployeeName }).ToList();
 
-             return View();
+           var bodyTypeList = _context.RootMv1VehicleBodyTypes.Select(u => u.VehicleBodyName).ToList();
+            ViewBag.bodyTypeList = bodyTypeList;
+            //bring vehicle name
+            var vehiclename = _context.RootMv2VehicleNames.Select(u => u.VehicleName).ToList();
+            ViewBag.vehiclename = vehiclename;
+            //bring wherehouse
+            var vehiclWarehouse = _context.RootMv3VehicleWarehouses.Select(u => u.WarehouseName).ToList();
+            ViewBag.vehiclWarehouse = vehiclWarehouse;
+            //bring vehcle source
+            var vehicleSource = _context.RootMv4VehicleSources.Select(u => u.VehicleSource).ToList();
+            ViewBag.vehicleSource = vehicleSource;
+            //bring individuals
+            var individul_fullname = _context.Table1Mains.Select(u => u.FullName).ToList();
+            ViewBag.individul_fullname = individul_fullname;
+
+
+            return View();
         }
         [HttpPost]
         public ActionResult CreateVehicle(TableMv1Vehicle CreateVehicleOBJ)
         {
             _context.Entry(CreateVehicleOBJ).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             _context.SaveChanges();
-            return View();
+
+            
+            return RedirectToAction("CreateVehicle");
         }
 
         //-----------------------------------------
