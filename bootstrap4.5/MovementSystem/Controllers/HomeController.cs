@@ -87,7 +87,72 @@ namespace MovementSystem.Controllers
             
             return RedirectToAction("CreateVehicle");
         }
+        public ActionResult VehicleEdite(int id)
+        {//bring bodyType
+         //model.EmployeesList = data.Select(x => new Itemlist { Value = x.EmployeeId, Text = x.EmployeeName }).ToList();
 
+           TempData["id"] = id;
+            TableMv1Vehicle vehicleEditeOBj = _context.TableMv1Vehicles.Where(i => i.IdVehicle == id).FirstOrDefault();
+
+
+
+
+            var bodyTypeList = _context.RootMv1VehicleBodyTypes.Select(u => u.VehicleBodyName).ToList();
+            ViewBag.bodyTypeList = bodyTypeList;
+            //bring vehicle name
+            var vehiclename = _context.RootMv2VehicleNames.Select(u => u.VehicleName).ToList();
+            ViewBag.vehiclename = vehiclename;
+            //bring wherehouse
+            var vehiclWarehouse = _context.RootMv3VehicleWarehouses.Select(u => u.WarehouseName).ToList();
+            ViewBag.vehiclWarehouse = vehiclWarehouse;
+            //bring vehcle source
+            var vehicleSource = _context.RootMv4VehicleSources.Select(u => u.VehicleSource).ToList();
+            ViewBag.vehicleSource = vehicleSource;
+            //bring individuals
+            var individul_fullname = _context.Table1Mains.Select(u => u.FullName).ToList();
+            ViewBag.individul_fullname = individul_fullname;
+
+
+            return View(vehicleEditeOBj);
+        }
+        [HttpPost]
+        public ActionResult VehicleEdite( TableMv1Vehicle editeOBJ)
+        {
+            int s = Convert.ToInt32(TempData["id"].ToString());
+
+            _context.Attach(editeOBJ);
+            _context.Entry(editeOBJ).State = EntityState.Modified;
+            _context.SaveChanges();
+            //insert to log table 
+
+            //TableMv1Vehicle select_last_row_obj = _context.TableMv1Vehicles.Where(p => p.IdVehicle == ).Select
+
+             //var  liste = _context.TableMv1Vehicles.Where(i => i.IdVehicle == s).Select(x => new { x.IdVehicle, x.StatusLastVehicleColor, x.StatusLastArmored, x.StatusLastHoursWork, x.StatusLastKilometers, x.StatusLastVehicleConsumingRate, x.StatusLastVehicleWarehouse, x.StatusLastVehicleSource, x.DateAdd }).ToList();
+
+            List<TableMv2StatusVehicleRegister> List = (from p in _context.TableMv1Vehicles.AsEnumerable().Where(p => p.IdVehicle == s)
+                                                        select new TableMv2StatusVehicleRegister
+                                                 {
+                                                     IdVehicle = p.IdVehicle,
+                                                     VehicleColor = p.StatusLastVehicleColor.ToString(),
+                                                     VehicleArmored = p.StatusLastArmored.ToString(),
+                                                     VehicleHoursWork = p.StatusLastHoursWork.ToString(),
+                                                     VehicleKilometers = p.StatusLastKilometers.ToString(),
+                                                     VehicleConsumingRate = p.StatusLastVehicleConsumingRate.ToString(),
+                                                     VehicleWarehouse = p.StatusLastVehicleWarehouse.ToString(),
+                                                       VehicleSource = p.StatusLastVehicleSource.ToString(),
+                                                     DateAdd = p.DateAdd.ToString()
+
+                                                        }).ToList();
+            _context.TableMv2StatusVehicleRegisters.AddRange(List);
+            //var addedEntities = _context.ChangeTracker.Entries()
+            //        .Any(x => x.State == EntityState.Added);
+
+
+            _context.SaveChanges();
+
+
+            return  RedirectToAction("index");
+        }
         //-----------------------------------------
 
         public IActionResult Privacy()
