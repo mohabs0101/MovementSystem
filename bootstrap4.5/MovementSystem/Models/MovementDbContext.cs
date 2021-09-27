@@ -19,6 +19,7 @@ namespace MovementSystem.Models
 
         public virtual DbSet<Root1Recentlit> Root1Recentlits { get; set; }
         public virtual DbSet<Root8Eliminate> Root8Eliminates { get; set; }
+        public virtual DbSet<RootMv1VehicleBodyName> RootMv1VehicleBodyNames { get; set; }
         public virtual DbSet<RootMv1VehicleBodyType> RootMv1VehicleBodyTypes { get; set; }
         public virtual DbSet<RootMv2VehicleName> RootMv2VehicleNames { get; set; }
         public virtual DbSet<RootMv3VehicleWarehouse> RootMv3VehicleWarehouses { get; set; }
@@ -29,7 +30,7 @@ namespace MovementSystem.Models
         public virtual DbSet<TableMv3WorkLocation> TableMv3WorkLocations { get; set; }
         public virtual DbSet<TableMv4WorkLocationRegister> TableMv4WorkLocationRegisters { get; set; }
 
-        
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

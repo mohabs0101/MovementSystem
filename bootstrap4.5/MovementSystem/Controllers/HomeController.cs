@@ -62,6 +62,9 @@ namespace MovementSystem.Controllers
 
            var bodyTypeList = _context.RootMv1VehicleBodyTypes.Select(u => u.VehicleBodyName).ToList();
             ViewBag.bodyTypeList = bodyTypeList;
+
+            var bodynamesList = _context.RootMv1VehicleBodyNames.Select(u => u.VehicleBodyName2).ToList();
+            ViewBag.bodynamesList = bodynamesList;
             //bring vehicle name
             var vehiclename = _context.RootMv2VehicleNames.Select(u => u.VehicleName).ToList();
             ViewBag.vehiclename = vehiclename;
@@ -72,7 +75,7 @@ namespace MovementSystem.Controllers
             var vehicleSource = _context.RootMv4VehicleSources.Select(u => u.VehicleSource).ToList();
             ViewBag.vehicleSource = vehicleSource;
             //bring individuals
-            var individul_fullname = _context.Table1Mains.Select(u => u.FullName).ToList();
+            var individul_fullname = _context.Table1Mains.Where(i=>i.Activation=="مستمر").Select(u => u.FullName).ToList();
             ViewBag.individul_fullname = individul_fullname;
 
 
@@ -84,7 +87,33 @@ namespace MovementSystem.Controllers
             _context.Entry(CreateVehicleOBJ).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             _context.SaveChanges();
 
-            
+
+
+
+            //var lastRow_FullColumns= _context.TableMv1Vehicles.FirstOrDefault(p => p.IdVehicle == _context.TableMv1Vehicles.Max(x => x.IdVehicle));
+
+            //int _lastid = Convert.ToInt32(lastID);
+
+            var lastID = _context.TableMv1Vehicles.Max(x => x.IdVehicle);
+            int _lastID = Convert.ToInt32(lastID);
+
+            List<TableMv2StatusVehicleRegister> _List = (from p in _context.TableMv1Vehicles.AsEnumerable().Where(p => p.IdVehicle == _lastID)
+                                                        select new TableMv2StatusVehicleRegister
+                                                        {
+                                                            IdVehicle = p.IdVehicle,
+                                                            VehicleColor = p.StatusLastVehicleColor.ToString(),
+                                                            VehicleArmored = p.StatusLastArmored.ToString(),
+                                                            VehicleHoursWork = p.StatusLastHoursWork.ToString(),
+                                                            VehicleKilometers = p.StatusLastKilometers.ToString(),
+                                                            VehicleConsumingRate = p.StatusLastVehicleConsumingRate.ToString(),
+                                                            VehicleWarehouse = p.StatusLastVehicleWarehouse.ToString(),
+                                                            VehicleSource = p.StatusLastVehicleSource.ToString(),
+                                                            DateAdd = p.DateAdd.ToString()
+
+                                                        }).ToList();
+            _context.TableMv2StatusVehicleRegisters.AddRange(_List);
+            _context.SaveChanges();
+
             return RedirectToAction("CreateVehicle");
         }
         public ActionResult VehicleEdite(int id)
@@ -99,6 +128,8 @@ namespace MovementSystem.Controllers
 
             var bodyTypeList = _context.RootMv1VehicleBodyTypes.Select(u => u.VehicleBodyName).ToList();
             ViewBag.bodyTypeList = bodyTypeList;
+            var bodynamesList = _context.RootMv1VehicleBodyNames.Select(u => u.VehicleBodyName2).ToList();
+            ViewBag.bodynamesList = bodynamesList;
             //bring vehicle name
             var vehiclename = _context.RootMv2VehicleNames.Select(u => u.VehicleName).ToList();
             ViewBag.vehiclename = vehiclename;
@@ -151,7 +182,7 @@ namespace MovementSystem.Controllers
             _context.SaveChanges();
 
 
-            return  RedirectToAction("index");
+            return  RedirectToAction("VehicleList");
         }
         //-----------------------------------------
 

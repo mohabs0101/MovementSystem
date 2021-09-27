@@ -20,6 +20,9 @@ namespace MovementSystem.Models
         [Column("vehicle_body_type")]
         [StringLength(50)]
         public string VehicleBodyType { get; set; }
+        [Column("vehicle_body_Name")]
+        [StringLength(50)]
+        public string VehicleBodyName { get; set; }
         [Column("vehicle_name")]
         [StringLength(50)]
         public string VehicleName { get; set; }
