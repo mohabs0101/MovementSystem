@@ -240,6 +240,8 @@
     <!-- Core js -->
     <script src="~/assets/js/core.js"></script>
     <!-- End js -->
+    @await Component.InvokeAsync("Notyf");
+
     @RenderSection("Scripts", required: false)
 
     @RenderSection("datatable_section", required: false)

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MovementSystem.Models;
@@ -15,25 +16,26 @@ namespace MovementSystem.Controllers
 
 
 
+        private readonly INotyfService _notyf;
 
         private readonly MovementDbContext  _context;
-        public HomeController(MovementDbContext context)
+        public HomeController(MovementDbContext context, INotyfService notyf)
         {
             _context = context;
+            _notyf = notyf;
         }
+            //private readonly ILogger<HomeController> _logger;
 
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
+            //public HomeController(ILogger<HomeController> logger)
+            //{
+            //    _logger = logger;
+            //}
 
 
 
 
-        public IActionResult Index()
+
+            public IActionResult Index()
         {
             return View();
         }
@@ -88,8 +90,12 @@ namespace MovementSystem.Controllers
             _context.SaveChanges();
 
 
-
-
+            _notyf.Success("      تم ادخال المركبة بنجاح      ");
+            _notyf.Success(" تم ادخال المركبة بنجاح",3);
+            _notyf.Error("error");
+            _notyf.Warning("warning");
+            _notyf.Information("informations");
+            _notyf.Custom("custom notification",5,"whitesmoke","fa fa-gear");/* #sdefse or fa fa-home*/
             //var lastRow_FullColumns= _context.TableMv1Vehicles.FirstOrDefault(p => p.IdVehicle == _context.TableMv1Vehicles.Max(x => x.IdVehicle));
 
             //int _lastid = Convert.ToInt32(lastID);
