@@ -14,6 +14,14 @@ namespace MovementSystem.Controllers
     public class HomeController : Controller
     {
 
+        //_notyf.Success(" تم ادخال المركبة بنجاح  ");
+            //_notyf.Success(" تم ادخال المركبة بنجاح",3);
+            //_notyf.Error("error");
+            //_notyf.Warning("warning");
+            //_notyf.Information("informations");
+            //_notyf.Custom("custom notification",5,"whitesmoke","fa fa-gear");/* #sdefse or fa fa-home*/
+            //var lastRow_FullColumns= _context.TableMv1Vehicles.FirstOrDefault(p => p.IdVehicle == _context.TableMv1Vehicles.Max(x => x.IdVehicle));
+
 
 
         private readonly INotyfService _notyf;
@@ -87,16 +95,17 @@ namespace MovementSystem.Controllers
         public ActionResult CreateVehicle(TableMv1Vehicle CreateVehicleOBJ)
         {
             _context.Entry(CreateVehicleOBJ).State = Microsoft.EntityFrameworkCore.EntityState.Added;
-            _context.SaveChanges();
+             _context.SaveChanges();
+            if (_context.SaveChanges() > 0)
+            {
+                _notyf.Custom("تم الادخال بنجاح", 3, "#00cc66", "fa fa-check");
 
 
-            _notyf.Success("      تم ادخال المركبة بنجاح      ");
-            _notyf.Success(" تم ادخال المركبة بنجاح",3);
-            _notyf.Error("error");
-            _notyf.Warning("warning");
-            _notyf.Information("informations");
-            _notyf.Custom("custom notification",5,"whitesmoke","fa fa-gear");/* #sdefse or fa fa-home*/
-            //var lastRow_FullColumns= _context.TableMv1Vehicles.FirstOrDefault(p => p.IdVehicle == _context.TableMv1Vehicles.Max(x => x.IdVehicle));
+            }
+            else
+            {        _notyf.Error("حدث خطاء عند الادخال");
+            }
+
 
             //int _lastid = Convert.ToInt32(lastID);
 
