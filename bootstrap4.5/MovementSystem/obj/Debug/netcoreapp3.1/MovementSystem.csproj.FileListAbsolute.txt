@@ -2644,3 +2644,4 @@ C:\Users\mohammed\Desktop\MS\MovementSystem\bootstrap4.5\MovementSystem\obj\Debu
 C:\Users\mohammed\Desktop\MS\MovementSystem\bootstrap4.5\MovementSystem\bin\Debug\netcoreapp3.1\MovementSystem.StaticWebAssets.xml
 C:\Users\mohammed\Desktop\MS\MovementSystem\bootstrap4.5\MovementSystem\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.Views.dll
 C:\Users\mohammed\Desktop\MS\MovementSystem\bootstrap4.5\MovementSystem\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.dll
+C:\Users\mohammed\Desktop\MS\MovementSystem\bootstrap4.5\MovementSystem\obj\Debug\netcoreapp3.1\MovementSystem.csproj.AssemblyReference.cache
