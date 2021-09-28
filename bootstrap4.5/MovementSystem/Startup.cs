@@ -36,7 +36,7 @@ namespace MovementSystem
 
             services.AddNotyf(config =>
             {
-                config.DurationInSeconds = 10;
+                config.DurationInSeconds = 100000;
                 config.IsDismissable = true;
                 config.Position = NotyfPosition.TopRight;
 

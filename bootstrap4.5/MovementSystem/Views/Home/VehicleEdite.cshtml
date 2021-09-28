@@ -31,12 +31,14 @@
 
                         <option value="">--نوع الهيكل--</option>
                     </select>
+                    <span asp-validation-for="VehicleBodyType" class="text-danger"></span>
+
                     @*<input type="hidden" asp-for="VehicleBodyType" />*@
 
 
 
                     @*SelectList customers = new SelectList(this.Context.Customers.ToList(), "CustomerId", "Name");
-                        return View(customers);*@
+        return View(customers);*@
                 </div>
                 <div class=" col">
                     <label class="control-label">اسم المركبة</label>
